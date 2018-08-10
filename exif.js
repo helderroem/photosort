@@ -1,4 +1,5 @@
 import { exec } from 'child_process'
+import curry from 'lodash.curry'
 
 const exifDateRegex = /^\d{4}:\d{2}:\d{2}\s\d{2}:\d{2}:\d{2}([+-][\d:]+)?/
 export const isExifDate = date => exifDateRegex.test(date)
@@ -14,8 +15,8 @@ export const parseExifData = data => {
   }, {})
 }
 
-export const readExif = execFunc => imagePath => new Promise((resolve, reject) => (
-  execFunc(`exiftool -json "${imagePath}"`, (error, stdout, stderror) => {
+export const readExif = curry((execFunc, imagePath) => new Promise(
+  (resolve, reject) => execFunc(`exiftool -json "${imagePath}"`, (error, stdout, stderror) => {
     if (error) {
       reject(error)
     }
