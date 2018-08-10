@@ -1,6 +1,6 @@
 import test from 'ava'
 import { stub, match } from 'sinon'
-import { readExif, parseExifDate, isExifDate, parseExifData } from './exif'
+import { readExif, parseExifDate, parseExifDates, isExifDate, parseExifData } from './exif'
 
 test('isExifDate returns false if the value is not an exif formatted date', t => {
   t.false(isExifDate('2016-03-19T06:53:54.000Z'))
@@ -30,6 +30,17 @@ test('parseExifDate respects timezone', t => {
 
 test('parseExifDate works without a timezone', t => {
   t.is(parseExifDate('2016:03:19 13:23:54').toISOString(), '2016-03-19T13:23:54.000Z')
+})
+
+test('parseExifDates works with an array of dates', t => {
+  const dates = parseExifDates(['2016:03:19 13:23:54', '2016:03:19 13:23:54+06:30'])
+  t.is(dates[0].toISOString(), '2016-03-19T13:23:54.000Z')
+  t.is(dates[1].toISOString(), '2016-03-19T06:53:54.000Z')
+})
+
+test('parseExifDates works with a single date', t => {
+  const dates = parseExifDates('2016:03:19 13:23:54')
+  t.is(dates.toISOString(), '2016-03-19T13:23:54.000Z')
 })
 
 test('parseExifData transforms the string from exiftool to a JS object', t => {

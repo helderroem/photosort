@@ -6,11 +6,12 @@ export const isExifDate = date => exifDateRegex.test(date)
 
 const exifYearMonthDayRegex = /^(\d{4}):(\d{2}):(\d{2})/
 export const parseExifDate = date => new Date(date.replace(exifYearMonthDayRegex, '$1-$2-$3'))
+export const parseExifDates = dates => (Array.isArray(dates) ? dates.map(parseExifDate) : parseExifDate(dates))
 
 export const parseExifData = data => {
   const json = JSON.parse(data)[0]
   return Object.keys(json).reduce((parsed, currentKey) => {
-    parsed[currentKey] = isExifDate(json[currentKey]) ? parseExifDate(json[currentKey]) : json[currentKey]
+    parsed[currentKey] = isExifDate(json[currentKey]) ? parseExifDates(json[currentKey]) : json[currentKey]
     return parsed
   }, {})
 }
@@ -23,7 +24,7 @@ export const readExif = curry((execFunc, imagePath) => new Promise(
     try {
       resolve(parseExifData(stdout))
     } catch (error) {
-      reject(stderror)
+      reject(error)
     }
   })
 ))
