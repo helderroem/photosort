@@ -1,0 +1,4 @@
+{
+	"standard.autoFixOnSave": true,
+	"cSpell.words": ["exif", "exiftool", "stderror", "reify", "photosort", "xattr"]
+}
