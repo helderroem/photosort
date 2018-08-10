@@ -20,6 +20,9 @@ coverage
 # nyc test coverage
 .nyc_output
 
+# reify generated files (https://github.com/benjamn/reify/blob/21d7dde7fea792c575948fd305471dc940763329/packages/custom-cache-example/README.md)
+.reify-cache
+
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
