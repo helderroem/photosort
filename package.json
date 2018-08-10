@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"chalk": "^2.4.1",
+		"fast-glob": "^2.2.2",
 		"fs-extra": "^7.0.0",
 		"lodash.capitalize": "^4.2.1",
 		"lodash.curry": "^4.1.1",
