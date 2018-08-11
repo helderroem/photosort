@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "a command line tool to sort photos by camera type and date taken",
 	"bin": {
-		"photosort": "./index.js"
+		"photosort": "./bin.js"
 	},
 	"scripts": {
 		"test": "run-s lint unit:report",
@@ -12,7 +12,7 @@
 		"unit:watch": "run-s 'unit -- --watch'",
 		"unit:report": "nyc ava",
 		"lint": "standard",
-		"start": "node --require reify index.js"
+		"start": "node bin.js"
 	},
 	"keywords": [
 		"exif",
