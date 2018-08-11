@@ -2,7 +2,7 @@ import {exec} from 'child_process'
 import capitalize from 'lodash.capitalize'
 import curry from 'lodash.curry'
 
-export const tagsContent = tags => tags.map(tag => `<string>${tag}</string>`).join('')
+export const tagsContent = tags => tags.reduce((all, tag) => `${all}<string>${tag}</string>`, '')
 
 const plistDoctype = '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">'
 export const tagPlist = tags => (
@@ -12,7 +12,7 @@ export const tagPlist = tags => (
 export const addTags = curry(
   (execFunc, filePath, tags) => new Promise((resolve, reject) => execFunc(
     `xattr -w com.apple.metadata:_kMDItemUserTags '${tagPlist(tags)}' "${filePath}"`,
-    (error) => {
+    (error, stdout, stderror) => {
       if (error) reject(error)
       else resolve(true)
     })
