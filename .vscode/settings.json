@@ -1,13 +1,14 @@
 {
 	"standard.autoFixOnSave": true,
-	"cSpell.words": [
-		"exif",
-		"exiftool",
-		"stderror",
-		"reify",
-		"photosort",
-		"xattr"
-	],
+  "cSpell.words": [
+    "exif",
+    "exiftool",
+    "photosort",
+    "reify",
+    "septiembre",
+    "stderror",
+    "xattr"
+  ],
 	"files.exclude": {
 		"data.zip": true
 	},
