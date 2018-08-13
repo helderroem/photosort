@@ -12,7 +12,7 @@ export const tagPlist = tags => (
 export const addTags = curry(
   (execFunc, filePath, tags) => new Promise((resolve, reject) => execFunc(
     `xattr -w com.apple.metadata:_kMDItemUserTags '${tagPlist(tags)}' "${filePath}"`,
-    (error, stdout, stderror) => {
+    (error) => {
       if (error) reject(error)
       else resolve(true)
     })
