@@ -10,7 +10,7 @@
 		"unit": "ava",
 		"unit:snapshot": "run-s 'unit -- --update-snapshots'",
 		"unit:watch": "run-s 'unit -- --watch'",
-		"unit:report": "nyc ava",
+		"unit:report": "nyc --all ava",
 		"lint": "standard",
 		"start": "node bin.js"
 	},
