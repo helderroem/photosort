@@ -23,16 +23,19 @@ const processFile = curry((readPath, writePath, imagePath) => readExif(imagePath
   })
 )
 
-console.log(white(`searching ${blue(readPath)} for image(s)`))
-const globPatterns = ['**/*.{CR2,jpg,jpeg,dng,JPG,JPEG,DNG,RW2}']
+const readPath = './samples/'
+const writePath = 'Pictures/'
 const globOptions = { cwd: readPath, absolute: true }
 
+export default () => {
+  console.log(white(`searching ${blue(readPath)} for image(s)`))
 fg(globPatterns, globOptions)
   .then(files => {
-		const total = files.length;
+      const total = files.length
     console.log(white(`processing ${blue(total)} image(s)`))
     return [files, new ProgressBar(`${yellow('[:bar]')} ${blue(':current/:total')}`, { total })]
   })
   .then(([ files, progress ]) => Promise.all(files.map(file => processFile(readPath, writePath, file).then(progress.tick.bind(progress)))))
   .then(() => console.log(green('done 👍')))
   .catch(console.error)
+}
