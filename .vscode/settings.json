@@ -1,4 +1,17 @@
 {
 	"standard.autoFixOnSave": true,
-	"cSpell.words": ["exif", "exiftool", "stderror", "reify", "photosort", "xattr"]
+	"cSpell.words": [
+		"exif",
+		"exiftool",
+		"stderror",
+		"reify",
+		"photosort",
+		"xattr"
+	],
+	"files.exclude": {
+		"data.zip": true
+	},
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": true,
+	"editor.tabSize": 2
 }
