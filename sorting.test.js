@@ -18,6 +18,6 @@ test('deriveNewFolder adds unsorted to the write path if no date supplied', t =>
   t.is(deriveNewFolder('some/path', undefined), 'some/path/unsorted')
 })
 
-test('deriveNewFilename prepends old folder path to file name, _ seperated', t => {
+test('deriveNewFilename prepends old folder path to file name, _ separated', t => {
   t.is(deriveNewFilename('old/root/', 'old/root/some/deep/folder/file.ext'), 'some_deep_folder_file.ext')
 })
